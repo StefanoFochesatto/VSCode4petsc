@@ -70,7 +70,8 @@ For a new project, you can use **Ctrl+Shift+B** to run the default build task on
       "options": {
         "env": {
           "PETSC_DIR": "/home/stefano/petsc", 
-          "PETSC_ARCH": "arch-linux-c-debug"
+          "PETSC_ARCH": "arch-linux-c-debug",
+          "LD_LIBRARY_PATH":"/home/stefano/petsc/arch-linux-c-debug/lib"
         }
       },
       "group": {
