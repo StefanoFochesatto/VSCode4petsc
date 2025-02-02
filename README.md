@@ -198,3 +198,29 @@ for serial debugging and another for parallel debugging (which doesn't technical
 
 ```
 
+## 7. Reconfiguring
+PETSc offers a reconfigure script which will allow you to modify your configuration after the fact. This script is hidden pretty deep
+inside the `$PETSC_ARCH` directory,
+```
+$PETSC_DIR/$PETSC_ARCH/lib/petsc/conf/reconfigure-$PETSC_ARCH.py
+```
+The docs suggest to symlink this script into your `$PETSC_DIR` but I don't want to be navigating there everytime I need to reconfigure PETSc so 
+we'll setup a command in `~/.bash.rc`. Here is how to set that up,
+```
+nano ~/.bashrc
+```
+Append this to the end. 
+```
+petsc_reconfigure() {
+    ( cd "$PETSC_DIR" && python "$PETSC_DIR/$PETSC_ARCH/lib/petsc/conf/reconfigure-$PETSC_ARCH.py" "$@" )
+}
+```
+Then run
+```
+source ~/.bashrc
+```
+Now from anywhere you can run the reconfigure script with the following, 
+```
+$ petsc_reconfigure
+
+```
