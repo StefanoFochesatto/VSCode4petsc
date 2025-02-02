@@ -1,0 +1,78 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug PETSc Program",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/${fileBasenameNoExtension}",
+      "args": [
+        // Place any PETSc command-line options here, for example:
+        // "-dm_view", "vtk:mesh.vtu"
+      ],
+      "stopAtEntry": false,
+      "cwd": "${workspaceFolder}",
+      "environment": [
+        {
+          "name": "PETSC_DIR",
+          "value": "/home/stefano/petsc"
+        },
+        {
+          "name": "PETSC_ARCH",
+          "value": "arch-linux-c-debug"
+        },
+        {
+          "name": "LD_LIBRARY_PATH",
+          "value": "/home/stefano/petsc/arch-linux-c-debug/lib"
+        }
+      ],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "preLaunchTask": "Build Current C File",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+        "name": "Debug PETSc Program (MPI)",
+        "type": "cppdbg",
+        "request": "launch",
+        "program": "/usr/bin/mpiexec",
+        "args": [
+        "-n",
+        "1", // Adjust the number of processes as needed
+        "${workspaceFolder}/${fileBasenameNoExtension}"
+        ],
+        "stopAtEntry": false,
+        "cwd": "${workspaceFolder}",
+        "environment": [
+        {
+            "name": "PETSC_DIR",
+            "value": "/home/stefano/petsc"
+        },
+        {
+            "name": "PETSC_ARCH",
+            "value": "arch-linux-c-debug"
+        },
+        {
+            "name": "LD_LIBRARY_PATH",
+            "value": "/home/stefano/petsc/arch-linux-c-debug/lib"
+        }
+        ],
+        "externalConsole": false,
+        "MIMode": "gdb",
+        "preLaunchTask": "Build Current C File",
+        "setupCommands": [
+        {
+            "description": "Enable pretty-printing for gdb",
+            "text": "-enable-pretty-printing",
+            "ignoreFailures": true
+        }
+        ]
+    }
+  ]
+}

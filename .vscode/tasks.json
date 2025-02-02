@@ -1,0 +1,32 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build Current C File",
+      "type": "shell",
+      "command": "mpicc",
+      "args": [
+        "${file}",
+        "-g",
+        "-O0",
+        "-I${env:PETSC_DIR}/include",
+        "-I${env:PETSC_DIR}/${env:PETSC_ARCH}/include",
+        "-L${env:PETSC_DIR}/${env:PETSC_ARCH}/lib",
+        "-lpetsc",
+        "-o",
+        "${workspaceFolder}/${fileBasenameNoExtension}"
+      ],
+      "options": {
+        "env": {
+          "PETSC_DIR": "/home/stefano/petsc",
+          "PETSC_ARCH": "arch-linux-c-debug"
+        }
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": ["$gcc"]
+    }
+  ]
+}
