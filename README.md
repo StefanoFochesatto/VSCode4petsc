@@ -52,19 +52,20 @@ For a new project, you can use **Ctrl+Shift+B** to run the default build task on
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "Build Current C File",
+      "label": "Build PETSc Program",
       "type": "shell",
       "command": "mpicc",
       "args": [
-        "${file}",
+        "${workspaceFolder}/example.c",
         "-g",
         "-O0",
         "-I${env:PETSC_DIR}/include",
         "-I${env:PETSC_DIR}/${env:PETSC_ARCH}/include",
         "-L${env:PETSC_DIR}/${env:PETSC_ARCH}/lib",
+        "-Wl,-rpath,${env:PETSC_DIR}/arch-linux-c-debug/lib",
         "-lpetsc",
         "-o",
-        "${workspaceFolder}/${fileBasenameNoExtension}"
+        "${workspaceFolder}/example"
       ],
       "options": {
         "env": {
@@ -80,6 +81,7 @@ For a new project, you can use **Ctrl+Shift+B** to run the default build task on
     }
   ]
 }
+
 
 ```
 

@@ -23,7 +23,7 @@ int main(int argc, char **argv) {
          - Whether to use simplex elements (PETSC_TRUE) or tensor cells (PETSC_FALSE)
          - Pointer to the DM object
     */
-ierr = DMPlexCreateBoxMesh(PETSC_COMM_WORLD, 3, PETSC_FALSE,
+    ierr = DMPlexCreateBoxMesh(PETSC_COMM_WORLD, 3, PETSC_FALSE,
                              NULL, NULL, NULL, NULL,
                              PETSC_TRUE, 0, PETSC_TRUE, &dm); CHKERRQ(ierr);
 
