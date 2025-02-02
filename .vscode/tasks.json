@@ -2,7 +2,7 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "Build PETSc Program",
+      "label": "Build Current C File",
       "type": "shell",
       "command": "mpicc",
       "args": [
